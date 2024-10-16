@@ -1,6 +1,7 @@
 {
   "current": "Default",
   "presets": {
+    
     "Default": {
       "logo_width": 90,
       "color_schemes": {
