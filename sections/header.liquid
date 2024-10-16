@@ -70,6 +70,18 @@
       padding-top: 0.5rem;
     }
   }
+
+  /* My Changes */
+  .section-header {
+    /* the header bg is first displayed as white */
+    /* Then the code gets the calculated height, and sets the height of the header to be 0*/
+    /* That way its transparent. */
+    background-color:white;
+  }
+  sticky-header {
+    border-bottom: 0 !important;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0)) !important;
+  }
 </style>
 
 {%- style -%}
@@ -320,6 +332,8 @@
 
     setHeaderHeight() {
       document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      // My Changes:
+      this.header.style.height = 0;
     }
 
     disconnectedCallback() {

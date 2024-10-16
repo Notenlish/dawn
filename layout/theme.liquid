@@ -54,6 +54,16 @@
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
 
+      @font-face {
+        font-family: "Hoefler Text";
+        src: url("{{ 'hoefler-text-regular.ttf' | asset_url }}") format("truetype");
+      }
+
+      @font-face {
+        font-family: "Avenir";
+        src: url("{{ 'AvenirLTStd-Medium.otf' | asset_url }}") format("opentype");
+      }
+
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
         {% if forloop.index == 1 -%}

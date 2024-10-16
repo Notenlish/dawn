@@ -10,6 +10,7 @@
     {%- for link in section.settings.menu.links -%}
       <li>
         {%- if link.links != blank -%}
+          {%- comment -%}This is when link has multiple sublinks{%- endcomment -%}
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}">
               <summary
@@ -80,6 +81,7 @@
             </details>
           </header-menu>
         {%- else -%}
+          {%- comment -%}This is for when the link doesn't have sublinks{%- endcomment -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
             href="{{ link.url }}"
