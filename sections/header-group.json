@@ -46,10 +46,6 @@
     "header": {
       "type": "header",
       "settings": {
-<<<<<<< Updated upstream
-=======
-        "color_scheme": "scheme-2",
->>>>>>> Stashed changes
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
