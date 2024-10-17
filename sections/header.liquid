@@ -79,8 +79,10 @@
     background-color:white;
   }
   sticky-header {
+    /*
     border-bottom: 0 !important;
     background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0)) !important;
+    */
   }
 </style>
 
@@ -333,7 +335,7 @@
     setHeaderHeight() {
       document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
       // My Changes:
-      this.header.style.height = 0;
+      // this.header.style.height = 0;
     }
 
     disconnectedCallback() {
