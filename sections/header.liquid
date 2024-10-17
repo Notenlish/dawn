@@ -76,7 +76,9 @@
     /* background-color:white; */
     margin-bottom: calc(var(--header-height) * -1) !important;
     color:black;
-    transition: all 0.2s ease-in;
+    /* Normally you'd define it here but it applies the style that moves it up on pageload, and that also gets transitioned bcuz of this, which is a nono */
+    /* So we dynamically insert an transition instead of defining in css. */
+    /* transition: all 0.2s ease-in; */
   }
   .section-header.make-transparent {
     background-color:transparent;
@@ -346,6 +348,7 @@
       // My Changes:
       // this.header.style.height = 0;
       this.header.classList.add("make-transparent");
+      this.header.style.transition = "all 0.2s ease-in;";
     }
 
     disconnectedCallback() {
