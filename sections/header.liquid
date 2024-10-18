@@ -73,12 +73,10 @@
 
   /* My Changes */
   .section-header {
-    /* background-color:white; */
     margin-bottom: calc(var(--header-height) * -1) !important;
     color:black;
     /* Normally you'd define it here but it applies the style that moves it up on pageload, and that also gets transitioned bcuz of this, which is a nono */
     /* So we dynamically insert an transition instead of defining in css. */
-    /* transition: all 0.2s ease-in; */
   }
   .section-header.make-transparent {
     background-color:transparent;
@@ -122,6 +120,11 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script>
+  // why does css not show my margin-bottom at first render :sob:
+  const haha = window.document.getElementsByClassName("section-header");
+  haha.style.marginBottom = "margin-bottom: calc(var(--header-height) * -1) !important;";
+</script>
 
 {%- liquid
   for block in section.blocks
@@ -131,7 +134,7 @@
   endfor
 -%}
 
-<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+<{% if section.settings.sticky_header_type != 'none' %}sticky-header data-sticky-type="{{ section.settings.sticky_header_type }}"{% else %}div{% endif %} style="height:{{ section.settings.header_height }}px" class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
   {%- liquid
     assign social_links = false
     assign localization_forms = false
@@ -144,7 +147,7 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header style="height:{{ section.settings.header_height }}px" class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -348,7 +351,8 @@
       // My Changes:
       // this.header.style.height = 0;
       this.header.classList.add("make-transparent");
-      this.header.style.transition = "all 0.2s ease-in;";
+      this.header.style.transition = "background-color 0.2s ease-in,transform 0.2s ease-in";
+      console.log(this.header);
     }
 
     disconnectedCallback() {
@@ -675,6 +679,16 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 20
+    },
+    {
+      "id":"header_height",
+      "type": "range",
+      "min": 0,
+      "max": 256,
+      "step":4,
+      "unit":"px",
+      "label":"t:sections.all.height.height",
+      "default": 100
     }
   ],
   "blocks": [

@@ -1,3 +1,17 @@
 {% comment %}
-    Renders an Product for the hero section.
+  Renders an Product for the hero section.
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - show_secondary_image: {Boolean} Show secondary image on hover. Default: False (optional)
+  - text: {String} Shows some text over the product. Default: SomeText (optional)
+  - lazy_load: {Boolean} Controls whether the image should be lazily loaded. Default: False (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - section_id: {String} The ID of the section that contains this card.
 {% endcomment %}
+
+{%- if card_product and card_product != empty -%}
+  <div style="size:100%;background-color:pink;" class="">Test</div>
+{%- else -%}
+  <div style="size:100%;background-color:pink;" class="">Test</div>
+{%- endif -%}
