@@ -7,6 +7,7 @@
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    margin-bottom:100px;
   }
 
   @media screen and (min-width: 750px) {
@@ -14,6 +15,20 @@
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
+  }
+  .article-card__image {
+    position:absolute;
+    z-index:1;
+    left:0;
+    transition: transform 0.2s ease-in-out;
+  }
+  .card__content {
+    height:0;
+    margin:0;
+    padding:0;
+  }
+  .article-card__image:hover {
+    transform: scale(1.1);
   }
 {%- endstyle -%}
 

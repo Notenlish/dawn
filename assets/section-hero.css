@@ -47,12 +47,13 @@
   top: 0;
   left: 0;
   object-fit: cover;
-  transition: filter 0.2s ease-out;
+  transition: filter 0.2s ease-out, transform 0.2s ease-out;
 
   filter: contrast(0.9) brightness(0.85);
 }
 .section-hero-featured:hover img {
   filter: contrast(0.8) brightness(0.75);
+  transform: scale(1.01);
 }
 
 .section-hero-featured__content {
