@@ -14,6 +14,7 @@
       "settings": {
       }
     },
+    /*
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -60,6 +61,7 @@
         "show_text_below": false
       }
     },
+    */
     "rich_text": {
       "type": "rich-text",
       "blocks": {
@@ -215,7 +217,7 @@
   },
   "order": [
     "hero",
-    "image_banner",
+    // "image_banner",
     "rich_text",
     "featured_collection",
     "collage",

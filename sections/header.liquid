@@ -88,7 +88,7 @@
     background-color: white;
   }
   .section-header.make-transparent sticky-header {
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0)) !important;
+    background: linear-gradient(rgba(0,0,0,0.30), rgba(0,0,0,0)) !important;
   }
   sticky-header {
     border-bottom:0 !important;
@@ -325,6 +325,8 @@
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
 
+      this.beingHovered = false;
+
       this.setHeaderHeight();
 
       window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
@@ -344,6 +346,20 @@
       window.addEventListener('scroll', this.onScrollHandler, false);
 
       this.createObserver();
+
+      this.header.addEventListener("mouseover", ()=>{
+        this.header.classList.remove("make-transparent");
+        this.header.classList.add("make-opaque");
+        this.beingHovered = true;
+      })
+      this.header.addEventListener("mouseout", ()=>{
+        if (this.currentScrollTop > 0) {}
+        else {
+          this.header.classList.add("make-transparent");
+          this.header.classList.remove("make-opaque");
+        }
+        this.beingHovered = false;
+      })
     }
 
     setHeaderHeight() {
@@ -351,7 +367,8 @@
       // My Changes:
       // this.header.style.height = 0;
       this.header.classList.add("make-transparent");
-      this.header.style.transition = "background-color 0.2s ease-in,transform 0.2s ease-in";
+      this.header.style.transition = "background-color 0.2s ease-in, transform 0.15s ease-out";
+      this.header.style.top = "-1px";  // We need to do this otherwise there's a 1 pixel gap. 
       console.log(this.header);
     }
 
