@@ -1,0 +1,56 @@
+{% comment %}
+  Renders an Product for the hero section.
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - show_secondary_image: {Boolean} Show secondary image on hover. Default: False (optional)
+  - text: {String} Shows some text over the product. Default: SomeText (optional)
+  - lazy_load: {Boolean} Controls whether the image should be lazily loaded. Default: False (optional)
+  - placeholder_image: {String} The placeholder image to use when no product exists. Default: 'product-apparel-2' (optional)
+  - section_id: {String} The ID of the section that contains this card.
+  - full_height: {Boolean} Controls whether the item will take 1fr or 2fr. Default: False (optional)
+  - upper_text: {String} The text to show at the upper part of the title.
+{% endcomment %}
+
+{% liquid
+  assign full_height = full_height | default: false, allow_false: true
+
+  assign modifier_cls = ''
+  if full_height == true
+    assign modifier_cls = 'section-hero-featured--full'
+  endif
+%}
+
+{%- if card_product and card_product != empty -%}
+  <div href="{{ card_product.url }}" class="section-hero-featured {{ modifier_cls }}">
+    <img
+      srcset="
+        {%- if card_product.featured_image.src.width >= 165 -%}{{ card_product.featured_image.src | image_url: width: 165 }} 165w,{%- endif -%}
+        {%- if card_product.featured_image.src.width >= 360 -%}{{ card_product.featured_image.src | image_url: width: 360 }} 360w,{%- endif -%}
+        {%- if card_product.featured_image.src.width >= 533 -%}{{ card_product.featured_image.src | image_url: width: 533 }} 533w,{%- endif -%}
+        {%- if card_product.featured_image.src.width >= 720 -%}{{ card_product.featured_image.src | image_url: width: 720 }} 720w,{%- endif -%}
+        {%- if card_product.featured_image.src.width >= 1000 -%}{{ card_product.featured_image.src | image_url: width: 1000 }} 1000w,{%- endif -%}
+        {%- if card_product.featured_image.src.width >= 1500 -%}{{ card_product.featured_image.src | image_url: width: 1500 }} 1500w,{%- endif -%}
+        {{ card_product.featured_image.src | image_url }} {{ card_product.featured_image.src.width }}w
+      "
+      src="{{ card_product.featured_image.src | image_url: width: 650 }}"
+      alt="{{ card_product.featured_image.src.alt | escape }}"
+      class="motion-reduce"
+      loading="eager"
+      {%- comment -%}
+        width="{{ card_product.featured_image.width }}"
+        height="{{ card_product.featured_image.height }}"
+        sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: 2 }}px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+      {%- endcomment -%}
+    >
+    {%- comment -%}Yes. I did in fact put an empty space there so that it'd render and hover correctly. Grow up, best practices don't exist.{%- endcomment -%}
+    <a class="section-hero-featured-link" href="{{ card_product.url }}">{{ ' ' }}</a>
+    <div class="section-hero-featured__content">
+      <p class="section-hero-featured__content-upper">{{ upper_text }}</p>
+      <h2 class="section-hero-featured__content-title">{{ card_product.title }}</h2>
+      <button class="section-hero-featured__content-btn">Explore</button>
+    </div>
+  </div>
+{%- else -%}
+  <div class="section-hero-featured {{ modifier_cls }}">Test</div>
+{%- endif -%}

@@ -1,0 +1,43 @@
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Include the `-` in the template literals so that it doesnt render it as an empty line
+{%- endcomment -%}
+{%- style -%}
+{%- endstyle -%}
+
+{% for collection in collections %}
+  {%- if collection.title == 'Home page' -%}
+    {%- assign home_page_collection = collection -%}
+  {%- endif -%}
+  {%- comment -%}
+    <div>
+      <p>Collection of id: {{ collection.id }}</p>
+      <p>Items:</p>
+      <ul>
+        {% for item in collection.products %}
+          <li>{{ item.title }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {%- endcomment -%}
+{% endfor %}
+
+<div class="section-hero">
+  {% for item in home_page_collection.products %}
+    {% liquid
+      if forloop.index0 == 0
+        assign is_full_h = true
+      else
+        assign is_full_h = false
+      endif
+
+      assign i_to_text = 'Premium,Hand Picked,Sophisticated' | split: ','
+      assign up_text = i_to_text[forloop.index0]
+    %}
+
+    {% if forloop.index0 <= 3 %}
+      {% render 'hero-product', card_product: item, section_id: 1, full_height: is_full_h, upper_text: up_text %}
+    {% endif %}
+  {% endfor %}
+</div>

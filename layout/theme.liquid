@@ -311,6 +311,18 @@
     </script>
   </head>
 
+  {%- comment -%}
+    See this: https://instant.page/ . It's basically a really simple module that starts preloading a page when user hovers over/starts pressing the button/link.
+    UHH when testing locally instant page doesn't get loaded? IDK WHY
+  {%- endcomment -%}
+  {%- comment -%}
+    If I do it like this it gets blocked by strict origin bla bla policy.
+    <script
+      src="https://instant.page/5.2.0"
+      type="module"
+    ></script>
+  {%- endcomment -%}
+  {{ 'instant.js' | asset_url | script_tag }}
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
