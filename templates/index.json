@@ -217,6 +217,10 @@
     "blogposts": {
       "type":"featured-blog",
       "settings": {}
+    },
+    "projects": {
+      "type":"projects",
+      "settings": {}
     }
   },
   "order": [
@@ -227,6 +231,7 @@
     "collage",
     "video",
     "multicolumn",
-    "blogposts"
+    "blogposts",
+    "projects"
   ]
 }
