@@ -1,0 +1,244 @@
+<style>
+  .projects__container {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: row;
+    max-width: 100%;
+  }
+  .projects__item {
+    width: 100%;
+    height: 100%;
+    /*background-color: red;*/
+
+    position: relative;
+    width: max-content;
+    transition: transform var(--duration-long) ease;
+  }
+  .projects__item--thumbnail {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+    aspect-ratio: 16/9;
+  }
+  .projects__item--thumbnail::after {
+    width: 100%;
+    /*height: 100%;*/
+    left: 0;
+    aspect-ratio: 16/9;
+    top: 0;
+    content: '';
+    position: absolute;
+
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    z-index: 1;
+  }
+  .projects__item--thumbnail img {
+    width: 100%;
+    height: 100%;
+
+    aspect-ratio: 16/9;
+  }
+  .projects__item__bottom {
+    position: absolute;
+
+    left: 5rem;
+    bottom: 3rem;
+    margin-right: 1rem;
+    z-index: 2;
+  }
+  .projects__item__bottom::before {
+    width: 1px;
+    height: 100%;
+    content: '';
+    left: -2rem;
+    bottom: 0rem;
+    position: absolute;
+    background-color: white;
+  }
+  .projects__item__bottom--title {
+    color: rgba(var(--color-background), 0.95);
+    font-size: 3.2rem;
+    margin-top: 0;
+    margin-bottom: -1rem;
+  }
+  .projects__item__bottom--preview-text {
+    color: rgba(var(--color-background), 0.9);
+    margin-bottom: 0;
+  }
+  .projects__item__bottom--time {
+    position: absolute;
+    width: 7px;
+    height: 0;
+    content: '';
+    left: -2rem;
+    bottom: 0rem;
+    display: block !important;
+    background-color: white;
+  }
+
+  @keyframes timer_line {
+    0% {
+      height: 0;
+      bottom: 100%;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+
+  .projects__button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    padding-top: 1rem;
+  }
+  .projects__button {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+  .projects__button svg {
+    width: 100%;
+    height: 100%;
+  }
+  .projects__button--right {
+    transform: scaleX(-1);
+  }
+  .projects__button--disabled {
+    opacity: 50%;
+    cursor: auto;
+  }
+</style>
+
+<div class="projects page-width-desktop">
+  <h1 class="projects__title">Projects</h1>
+  <div class="projects__container">
+    {% for entry in shop.metaobjects.projects.values %}
+      <div class="projects__item">
+        <div class="projects__item__bottom">
+          <div class="projects__item__bottom--time"></div>
+          <h2 class="projects__item__bottom--title">{{ entry.title }}</h2>
+          <p class="projects__item__bottom--preview-text">{{ entry.preview_text }}</p>
+        </div>
+        <div class="projects__item--thumbnail">
+          <img
+            class=""
+            src="{{ entry.thumbnail.value | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+          >
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="projects__button-container">
+    <button id="projects__button--left" class="projects__button projects__button--left projects__button--disabled">
+      {{ 'carbon_arrow-left.svg' | inline_asset_content }}
+    </button>
+    <button id="projects__button--right" class="projects__button projects__button--right">
+      {{ 'carbon_arrow-left.svg' | inline_asset_content }}
+    </button>
+  </div>
+</div>
+
+{% javascript %}
+  let timers = document.getElementsByClassName('projects__item__bottom--time');
+  let all = [...document.getElementsByClassName('projects__item')];
+  let leftbtn = document.getElementById('projects__button--left');
+  let rightbtn = document.getElementById('projects__button--right');
+  let curIndex = 0;
+
+  let autoMoveDir = 1;
+
+  const animtime = 10;
+
+  let f = () => {
+    let curTimer = timers[curIndex];
+    curTimer.style.animation = 'none';
+    void curTimer.offsetWidth; // Trigger reflow to reset animation
+    curTimer.style.animation = `timer_line ${animtime}s linear forwards`;
+  };
+
+  const intervalFunc = () => {
+    f();
+    console.log('hihaiha');
+    if (autoMoveDir == 1) {
+      rightbtn.click();
+    } else {
+      leftbtn.click();
+    }
+  };
+
+  f();
+  let interval = setInterval(() => {
+    intervalFunc();
+  }, animtime * 1000);
+
+  let move = (direction) => {
+    let i = 0;
+    all.forEach((element) => {
+      dif = (curIndex - i) * -1;
+      element.style.transform = `translateX(${dif}00%)`;
+    });
+    f();
+
+    // reached end
+    if (curIndex == all.length - 1) {
+      autoMoveDir = -1;
+    }
+    // reached start
+    if (curIndex == 0) {
+      autoMoveDir = 1;
+    }
+  };
+
+  leftbtn.addEventListener('click', () => {
+    if (curIndex > 0) {
+      curIndex -= 1;
+    } else {
+      curIndex = 0;
+    }
+
+    if (curIndex == 0) {
+      leftbtn.classList.add('projects__button--disabled');
+      rightbtn.classList.remove('projects__button--disabled');
+    } else {
+      leftbtn.classList.remove('projects__button--disabled');
+      rightbtn.classList.remove('projects__button--disabled');
+    }
+    move();
+    clearInterval(interval);
+    interval = setInterval(() => {
+      intervalFunc();
+    }, animtime * 1000);
+  });
+  rightbtn.addEventListener('click', () => {
+    if (curIndex < all.length - 1) {
+      curIndex += 1;
+    } else {
+      curIndex = all.length - 1;
+    }
+
+    console.log(curIndex, all.length - 1);
+    if (curIndex == all.length - 1) {
+      rightbtn.classList.add('projects__button--disabled');
+      leftbtn.classList.remove('projects__button--disabled');
+    } else {
+      rightbtn.classList.remove('projects__button--disabled');
+      leftbtn.classList.remove('projects__button--disabled');
+    }
+    move();
+    clearInterval(interval);
+    interval = setInterval(() => {
+      intervalFunc();
+    }, animtime * 1000);
+  });
+{% endjavascript %}

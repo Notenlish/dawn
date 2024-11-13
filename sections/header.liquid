@@ -92,6 +92,8 @@
   }
   sticky-header {
     border-bottom:0 !important;
+    /* I added This, I hope this wasn't a mistake*/
+    /* z-index: 10; */
   }
 </style>
 
@@ -391,7 +393,7 @@
 
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
 
-      console.log(scrollTop);
+      //console.log(scrollTop);
 
 
       const dif = scrollTop - this.currentScrollTop;

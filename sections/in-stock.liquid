@@ -1,0 +1,104 @@
+<style>
+  .in-stock {
+    padding-block: 10rem;
+  }
+  .in-stock--title {
+    width: 100%;
+    text-align: center;
+  }
+  .in-stock__material__item {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .in-stock__material__item--img-container {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .in-stock__material__item--img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-short) ease;
+  }
+  .in-stock__material__item--img-container:hover .in-stock__material__item--img {
+    transform: scale(1.03);
+  }
+  .in-stock__material__item--title {
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    color: white;
+  }
+  .in-stock__material__item--title.left {
+    text-align: left;
+    margin-left: 8rem;
+  }
+  .in-stock__material__item--title.right {
+    text-align: right;
+    margin-right: 8rem;
+  }
+  .in-stock__material__item--title.dark {
+    color: black;
+  }
+  .in-stock--material__item--link {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+</style>
+
+<div class="in-stock page-width-desktop">
+  <h1 class="in-stock--title">In Stock</h1>
+  {% for entry in shop.metaobjects.material_color_collection.values %}
+    {% assign image_darkness_list = entry.img_dark | remove: '[' | remove: ']' | split: ',' %}
+    <div class="in-stock__material">
+      <h2 class="in-stock__material--title">{{ entry.material }}</h2>
+      {% for color_collection in entry.collections.value %}
+        {% assign col_class = '' %}
+        <div class="in-stock__material__item">
+          {% assign is_dark = entry.img_dark.value[forloop.index0] %}
+          {% assign is_left = forloop.index0 | modulo: 2 %}
+          {% if is_left == 0 %}
+            {% assign dir_class = 'left' %}
+          {% else %}
+            {% comment %}
+              It was supposed to be left and right bu the client didn't want it
+            {% endcomment %}
+            {% assign dir_class = 'left' %}
+          {% endif %}
+
+          {% if is_dark == 0 %}
+            {% assign col_class = 'dark' %}
+          {% endif %}
+
+          {% assign g = entry.material %}
+          {% assign color_title = color_collection.title %}
+          <a class="in-stock--material__item--link" href="{{ color_collection.url }}">
+            <div class="in-stock__material__item--img-container">
+              <img
+                class="in-stock__material__item--img"
+                src="{{ color_collection.image.src | image_url }}"
+                height="100"
+                width="auto"
+                alt=""
+              >
+              <h3 class="in-stock__material__item--title {{ dir_class }} {{ col_class }}">
+                {{- color_title | replace: g }}
+              </h3>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</div>

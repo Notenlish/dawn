@@ -21,6 +21,37 @@
   {% render 'card-product', show_vendor: section.settings.show_vendor %}
 {% endcomment %}
 
+{%- comment -%}FUCK YOU SHOPIFY AND LIQUID{%- endcomment -%}
+<style>
+  /*
+  .card__media {
+    aspect-ratio: 16/9;
+  }
+  .card--card:after,
+  .card--standard .card__inner:after {
+    aspect-ratio: 16/9;
+  }
+  .card__inner:after {
+    display: none;
+  }
+  .card__inner {
+    background: transparent;
+    flex-direction: column;
+  }
+  .card__inner:after*/
+  .card__inner {
+    flex-direction: column;
+  }
+  .card__content {
+    min-height: 10rem;
+  }
+  .card__inner:has(.card__media) {
+    aspect-ratio: 299/279;
+    overflow: hidden;
+  }
+</style>
+{%- comment -%}FUCK YOU SHOPIFY AND LIQUID{%- endcomment -%}
+
 {%- unless skip_styles -%}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-volume-pricing.css' | asset_url | stylesheet_tag }}
