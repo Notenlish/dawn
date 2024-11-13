@@ -1,7 +1,7 @@
 <style>
   :root {
     --hero-text-shadow-blur-rad: 8px;
-    --hero-text-shadow-color: rgba(0,0,0,0.2);
+    --hero-text-shadow-color: rgba(0, 0, 0, 0.2);
   }
   .slider-hero {
     width: 100%;
@@ -73,12 +73,14 @@
     padding-right: 1rem;
     padding-bottom: 2rem;
 
-    text-shadow: 1px 1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color), 1px -1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color), -1px 1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color), -1px -1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color);
+    text-shadow: 1px 1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color),
+      1px -1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color),
+      -1px 1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color),
+      -1px -1px var(--hero-text-shadow-blur-rad) var(--hero-text-shadow-color);
     background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.25) 60%, rgba(0, 0, 0, 0) 100%);
   }
   .slider-hero__item:has(video) .slider-hero__item__bottom {
     background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0) 100%);
-
   }
   .slider-hero__item__bottom::before {
     width: 1px;
