@@ -15,11 +15,17 @@
   "sections": {
     "footer": {
       "settings": {
-        "enable_language_selector": true,
         "enable_country_selector": true,
+        "enable_language_selector": true,
         "margin_top": 48
       },
-      "blocks": {}
+      "blocks": {
+        "footer-2": {
+          "settings": {
+            "subtext": "<p>To elevate architectural spaces with the world’s finest natural stones, combining quality, engineering, and craftsmanship. </p>"
+          }
+        }
+      }
     }
   }
 }
