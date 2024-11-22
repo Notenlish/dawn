@@ -45,8 +45,7 @@
     },
     "highlights": {
       "type": "highlights",
-      "settings": {
-      }
+      "settings": {}
     },
     "featured_collection": {
       "type": "featured-collection",
