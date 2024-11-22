@@ -12,5 +12,31 @@
   "context": {
     "market": "tr"
   },
-  "sections": {}
+  "sections": {
+    "rich_text": {
+      "settings": {},
+      "blocks": {
+        "heading": {
+          "settings": {
+            "heading": "Dünyanın En İyi Taşlarıyla Mekanları Dönüştürüyoruz"
+          }
+        },
+        "text": {
+          "settings": {
+            "text": "<p>Petra Stone'da, en iyi doğal taş yüzeyleri hayata geçirmek için mimariyi mühendislik, sanat ve zanaatkarlıkla harmanlıyoruz. İç ve dış mekan taş uygulamalarında uzmanlaşarak, her ölçekteki proje için tasarım, tedarik, kurulum ve bakım hizmetleri sağlıyoruz. 2019'dan beri, herhangi bir alanı yükseltmek için nadir mermer, oniks, granit ve kuvars taşları tedarik ederek mükemmellik mirası inşa ettik.</p>"
+          }
+        }
+      }
+    },
+    "highlights": {
+      "settings": {
+        "count_1": "30+",
+        "highlight_1": "Tamamlanan Proje",
+        "highlight_2": "Ülkeye İhracat",
+        "highlight_3": "Yıllık Deneyim",
+        "highlight_4": "Benzersiz Taşlar"
+      },
+      "blocks": {}
+    }
+  }
 }
