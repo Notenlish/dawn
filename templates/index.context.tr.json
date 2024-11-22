@@ -37,6 +37,41 @@
         "highlight_4": "Benzersiz Taşlar"
       },
       "blocks": {}
+    },
+    "featured_collection": {
+      "settings": {
+        "title": "Ürünler",
+        "description": ""
+      },
+      "blocks": {}
+    },
+    "blogposts": {
+      "settings": {
+        "heading": "Blog Yazıları"
+      },
+      "blocks": {}
+    },
+    "test": {
+      "settings": {
+        "title": "Taş Koleksiyonu"
+      },
+      "blocks": {}
+    },
+    "rich_text_Mt9Vai": {
+      "settings": {},
+      "blocks": {
+        "heading_d6bn6y": {
+          "settings": {
+            "heading": "İletişim"
+          }
+        }
+      }
+    },
+    "form": {
+      "settings": {
+        "heading": ""
+      },
+      "blocks": {}
     }
   }
 }
