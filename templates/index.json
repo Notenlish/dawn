@@ -45,7 +45,8 @@
     },
     "highlights": {
       "type": "highlights",
-      "settings": {}
+      "settings": {
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -94,7 +95,9 @@
     },
     "test": {
       "type": "in-stock",
-      "settings": {}
+      "settings": {
+        "title":"Stone Collection",
+      }
     },
     "test2": {
       "type": "project-previews",

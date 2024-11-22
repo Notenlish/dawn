@@ -41,30 +41,87 @@
     <li class="highlights__item">
       <div>
         {{ 'done-outline.svg' | inline_asset_content }}
-        <h2>30+</h2>
+        <h2>{{ section.settings.count_1 }}</h2>
       </div>
-      <p>projects completed</p>
+      <p>{{ section.settings.highlight_1 }}</p>
     </li>
     <li class="highlights__item">
       <div>
         {{ 'earth.svg' | inline_asset_content }}
-        <h2>36</h2>
+        <h2>{{ section.settings.count_2 }}</h2>
       </div>
-      <p>exporting to countries</p>
+      <p>{{ section.settings.highlight_2 }}</p>
     </li>
     <li class="highlights__item">
       <div>
         {{ 'construction.svg' | inline_asset_content }}
-        <h2>5</h2>
+        <h2>{{ section.settings.count_3 }}</h2>
       </div>
-      <p>years of expertise</p>
+      <p>{{ section.settings.highlight_3 }}</p>
     </li>
     <li class="highlights__item">
       <div>
         {{ 'carbon_gem.svg' | inline_asset_content }}
-        <h2>47</h2>
+        <h2>{{ section.settings.count_4 }}</h2>
       </div>
-      <p>unique stones</p>
+      <p>{{ section.settings.highlight_4 }}</p>
     </li>
   </ul>
 </div>
+
+{% schema %}
+{
+  "name": "In Stock Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "count_1",
+      "label": "Count 1",
+      "default": "30+"
+    },
+    {
+      "type": "text",
+      "id": "count_2",
+      "label": "Count 2",
+      "default": "36"
+    },
+    {
+      "type": "text",
+      "id": "count_3",
+      "label": "Count 3",
+      "default": "5"
+    },
+    {
+      "type": "text",
+      "id": "count_4",
+      "label": "Count 4",
+      "default": "47"
+    },
+
+    {
+      "type": "text",
+      "id": "highlight_1",
+      "label": "Highlight 1",
+      "default": "Projects Completed"
+    },
+    {
+      "type": "text",
+      "id": "highlight_2",
+      "label": "Highlight 2",
+      "default": "Exporting To Countries"
+    },
+    {
+      "type": "text",
+      "id": "highlight_3",
+      "label": "Highlight 3",
+      "default": "Years Of Expertise"
+    },
+    {
+      "type": "text",
+      "id": "highlight_4",
+      "label": "Highlight 4",
+      "default": "Unique Stones"
+    }
+  ]
+}
+{% endschema %}

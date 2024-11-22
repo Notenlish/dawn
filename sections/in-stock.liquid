@@ -58,7 +58,7 @@
 </style>
 
 <div class="in-stock page-width-desktop">
-  <h1 class="in-stock--title">Stone Collection</h1>
+  <h1 class="in-stock--title">{{ section.settings.title }}</h1>
   {% for entry in shop.metaobjects.material_color_collection.values %}
     {% assign image_darkness_list = entry.img_dark | remove: '[' | remove: ']' | split: ',' %}
     <div class="in-stock__material">
@@ -102,3 +102,28 @@
     </div>
   {% endfor %}
 </div>
+
+{% schema %}
+{
+  "name": "In Stock Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Stone Collection"
+    }
+  ]
+}
+{% endschema %}
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    const stockSection = document.querySelector('.in-stock');
+    const title = document.querySelector('.in-stock--title');
+
+    stockSection.style.paddingBlock = '{{ section.settings.padding }}rem';
+    title.style.textAlign = '{{ section.settings.text_alignment }}';
+    console.log('HAHAHAHAHAHHA');
+  });
+{% endjavascript %}
