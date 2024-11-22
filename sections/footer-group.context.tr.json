@@ -12,5 +12,14 @@
   "context": {
     "market": "tr"
   },
-  "sections": {}
+  "sections": {
+    "footer": {
+      "settings": {
+        "enable_language_selector": true,
+        "enable_country_selector": true,
+        "margin_top": 48
+      },
+      "blocks": {}
+    }
+  }
 }
