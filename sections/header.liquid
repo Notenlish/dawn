@@ -73,7 +73,6 @@
 
   /* My Changes */
   .section-header {
-    margin-bottom: calc(var(--header-height) * -1) !important;
     color:black;
     /* Normally you'd define it here but it applies the style that moves it up on pageload, and that also gets transitioned bcuz of this, which is a nono */
     /* So we dynamically insert an transition instead of defining in css. */
@@ -96,6 +95,18 @@
     /* z-index: 10; */
   }
 </style>
+
+{% comment %}
+  I added this.
+{% endcomment %}
+
+{% unless section.settings.enable_padding %}
+  <style>
+  .section-header {
+    margin-bottom: calc(var(--header-height) * -1) !important;
+  }
+  </style>
+{% endunless %}
 
 {%- style -%}
   .header {
