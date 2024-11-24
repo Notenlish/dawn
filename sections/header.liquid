@@ -99,16 +99,26 @@
 {% comment %}
   I added this.
 {% endcomment %}
+{% assign ishome = false %}
 
-{% unless section.settings.enable_padding %}
+{% if request.path == "/" %}
+  {% assign ishome = true %}
+{% elsif request.path == "/tr" %}
+  {% assign ishome = true %}
+{% elsif request.path contains "/projects/" %}
+  {% assign ishome = true %}
+{% endif %}
+
+
+{% if ishome %}
   <style>
   .section-header {
     margin-bottom: calc(var(--header-height) * -1) !important;
   }
   </style>
-{% endunless %}
+{% endif %}
 
-{% if section.settings.enable_padding %}
+{% unless ishome %}
   <style>
   .section-header.make-transparent sticky-header{
     background:transparent !important;
@@ -117,7 +127,7 @@
     filter: invert(0);
   }
   </style>
-{% endif %}
+{% endunless %}
 
 {%- style -%}
   .header {

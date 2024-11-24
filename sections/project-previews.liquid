@@ -65,6 +65,13 @@
     margin-top: 0;
     margin-bottom: -1rem;
   }
+  .projects__item__bottom--title a {
+    color: rgba(var(--color-background), 0.95);
+    text-decoration: none;
+  }
+  .projects__item__bottom--title a:hover {
+    text-decoration: underline;
+  }
   .projects__item__bottom--preview-text {
     color: rgba(var(--color-background), 0.9);
     margin-bottom: 0;
@@ -119,14 +126,24 @@
   }
 </style>
 
+{% assign base = '/' %}
+{% if request.path contains '/tr' %}
+  {% assign base = '/tr/' %}
+{% endif %}
+
 <div class="projects page-width-desktop">
   <h1 class="projects__title">{{ section.settings.title }}</h1>
   <div class="projects__container">
     {% for entry in shop.metaobjects.projects.values %}
+      {% assign url = shop.url | append: entry.system.url %}
       <div class="projects__item">
         <div class="projects__item__bottom">
           <div class="projects__item__bottom--time"></div>
-          <h2 class="projects__item__bottom--title">{{ entry.title }}</h2>
+
+          <h2 class="projects__item__bottom--title">
+            <a href="{{ url }}">{{ entry.title }}</a>
+          </h2>
+
           <p class="projects__item__bottom--preview-text">{{ entry.preview_text }}</p>
         </div>
         <div class="projects__item--thumbnail">
