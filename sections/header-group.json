@@ -46,6 +46,7 @@
     "header": {
       "type": "header",
       "settings": {
+        "enable_padding": true,
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
@@ -59,7 +60,8 @@
         "mobile_logo_position": "center",
         "margin_bottom": 0,
         "padding_top": 20,
-        "padding_bottom": 20
+        "padding_bottom": 20,
+        "header_height": 100
       }
     }
   },
