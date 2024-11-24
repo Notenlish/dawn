@@ -45,7 +45,16 @@
     },
     "highlights": {
       "type": "highlights",
-      "settings": {}
+      "settings": {
+        "count_1": "30+",
+        "count_2": "36",
+        "count_3": "5",
+        "count_4": "47",
+        "highlight_1": "Projects Completed",
+        "highlight_2": "Exporting To Countries",
+        "highlight_3": "Years Of Expertise",
+        "highlight_4": "Unique Stones"
+      }
     },
     "featured_collection": {
       "type": "featured-collection",
@@ -95,12 +104,14 @@
     "test": {
       "type": "in-stock",
       "settings": {
-        "title":"Stone Collection",
+        "title": "Stone Collection"
       }
     },
     "test2": {
       "type": "project-previews",
-      "settings": {}
+      "settings": {
+        "title": "Projects"
+      }
     },
     "rich_text_Mt9Vai": {
       "type": "rich-text",
