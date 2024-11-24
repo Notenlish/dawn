@@ -46,7 +46,7 @@
     "header": {
       "type": "header",
       "settings": {
-        "enable_padding": false,
+        "enable_padding": true,
         "logo_position": "middle-left",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
