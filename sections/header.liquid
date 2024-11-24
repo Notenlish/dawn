@@ -100,7 +100,7 @@
   I added this.
 {% endcomment %}
 
-{% unless section.settings.enable_padding %}
+{% if section.settings.enable_padding %}
   <style>
   .section-header {
     margin-bottom: calc(var(--header-height) * -1) !important;
@@ -112,7 +112,7 @@
     filter: invert(0);
   }
   </style>
-{% endunless %}
+{% if %}
 
 {%- style -%}
   .header {
