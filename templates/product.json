@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "please": {
-      "type":"header-spacing",
-      "settings": {}
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -228,7 +224,6 @@
     }
   },
   "order": [
-    "please",
     "main",
     "rich_text_AFUJkM",
     "multicolumn",
