@@ -1,0 +1,45 @@
+<style>
+  .breadcrumbs {
+  }
+  .breadcrumbs__list {
+    display: flex;
+    gap: 1rem;
+  }
+  .breadcrumbs__item {
+    list-style: none;
+  }
+  .breadcrumbs__item--link {
+  }
+  .breadcrumbs__item--link--active {
+  }
+</style>
+
+<div class="breadcrumbs">
+  <ul class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a class="breadcrumbs__item--link" href="{{ shop.url }}/collections/all">All Products</a>
+    </li>
+    <li>
+      <a class="breadcrumbs__item--link" href="{{ shop.url }}"></a>
+    </li>
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Project Previews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Projects"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ]
+}
+{% endschema %}

@@ -14,6 +14,10 @@
       "disabled": true,
       "settings": {}
     },
+    "breadcrumbs":{
+      "type":"breadcrumbs-product",
+      "settings": {}
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -229,6 +233,7 @@
     }
   },
   "order": [
+    "breadcrumbs",
     "please",
     "main",
     "rich_text_AFUJkM",
