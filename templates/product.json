@@ -9,13 +9,16 @@
  */
 {
   "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs-product",
+      "settings": {
+        "title": "Projects",
+        "product": "{{ product }}"
+      }
+    },
     "please": {
       "type": "header-spacing",
       "disabled": true,
-      "settings": {}
-    },
-    "breadcrumbs":{
-      "type":"breadcrumbs-product",
       "settings": {}
     },
     "main": {
