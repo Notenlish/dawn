@@ -12,7 +12,7 @@
     "breadcrumbs": {
       "type": "breadcrumbs-product",
       "settings": {
-        "title": "Projects",
+        "title": "All Products",
         "product": "{{ product }}"
       }
     },
