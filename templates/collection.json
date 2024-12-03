@@ -9,6 +9,13 @@
  */
 {
   "sections": {
+    "breadcrumbs": {
+      "type":"breadcrumbs-collection",
+      "settings": {
+        "title":"All Products",
+        "collection":"{{ collection }}"
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "settings": {
@@ -35,6 +42,7 @@
     }
   },
   "order": [
+    "breadcrumbs",
     "banner",
     "product-grid"
   ]

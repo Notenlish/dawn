@@ -1,0 +1,55 @@
+<style>
+  .breadcrumbs {
+    padding-block: 4rem 1rem;
+  }
+  .breadcrumbs__list {
+    display: flex;
+    gap: 0.3rem;
+    margin: 0;
+    padding: 0;
+  }
+  .breadcrumbs__item {
+    list-style: none;
+    color: #3e3e3e;
+  }
+  .breadcrumbs__item--active {
+    color: #000000;
+  }
+  .breadcrumbs__item--link {
+    color: currentColor;
+    /*text-decoration: none;*/
+  }
+</style>
+
+<div class="breadcrumbs page-width">
+  <ul class="breadcrumbs__list">
+    <li class="breadcrumbs__item">
+      <a class="breadcrumbs__item--link" href="{{ shop.url }}/collections/all">All Products</a>
+    </li>
+    <span>/</span>
+    <li class="breadcrumbs__item breadcrumbs__item--active">
+      <a class="breadcrumbs__item--link" href="{{ shop.url }}{{ section.settings.collection.url }}">
+        {{ section.settings.collection.title }}
+      </a>
+    </li>
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "Project Previews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "All Products"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ]
+}
+{% endschema %}
