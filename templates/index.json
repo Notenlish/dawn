@@ -12,7 +12,7 @@
     "slider-hero": {
       "type": "slider-hero",
       "settings": {
-        "sectionHeight": 85,
+        "sectionHeight": 75,
         "barVerticalPos": 79,
         "barHorizontalPos": -1.6
       }
