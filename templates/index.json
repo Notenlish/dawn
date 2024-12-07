@@ -13,7 +13,7 @@
       "type": "slider-hero",
       "settings": {
         "sectionHeight": 85,
-        "barVerticalPos": 37,
+        "barVerticalPos": 63,
         "barHorizontalPos": -1.6
       }
     },
