@@ -11,7 +11,11 @@
   "sections": {
     "slider-hero": {
       "type": "slider-hero",
-      "settings": {}
+      "settings": {
+        "sectionHeight": 85,
+        "barVerticalPos": 37,
+        "barHorizontalPos": -1.6
+      }
     },
     "rich_text": {
       "type": "rich-text",
